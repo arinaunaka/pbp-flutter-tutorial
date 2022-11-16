@@ -1,5 +1,6 @@
 import 'package:tutorial/main.dart';
 import 'package:flutter/material.dart';
+import 'package:tutorial/page/to_do_page.dart';
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -46,6 +47,16 @@ class _MyFormPageState extends State<MyFormPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MyFormPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Do'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToDoPage()),
                 );
               },
             ),
@@ -214,7 +225,8 @@ class _MyFormPageState extends State<MyFormPage> {
                       ),
                       TextButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.blue),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.blue),
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -228,26 +240,39 @@ class _MyFormPageState extends State<MyFormPage> {
                                   elevation: 15,
                                   child: Container(
                                     child: ListView(
-                                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                                      padding: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
                                       shrinkWrap: true,
                                       children: <Widget>[
                                         const Center(
-                                          child: Text('Informasi Data', 
-                                          style: TextStyle(fontWeight: FontWeight.bold),)),
+                                            child: Text(
+                                          'Informasi Data',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )),
                                         const SizedBox(height: 20),
                                         Center(
                                           child: Column(children: [
                                             Text('Nama:  $_namaLengkap'),
-                                            if (jenjangSarjana) const Text('Jenjang: Sarjana'),
-                                            if (jenjangDiploma) const Text('Jenjang: Diploma'),
-                                            if (jenjangMagister) const Text('Jenjang: Magister'),
-                                            if (jenjangDoktor) const Text('Jenjang: Doktor'),
+                                            if (jenjangSarjana)
+                                              const Text('Jenjang: Sarjana'),
+                                            if (jenjangDiploma)
+                                              const Text('Jenjang: Diploma'),
+                                            if (jenjangMagister)
+                                              const Text('Jenjang: Magister'),
+                                            if (jenjangDoktor)
+                                              const Text('Jenjang: Doktor'),
                                             Text('Umur:  $umur'),
                                             Text('Kelas:  $kelasPBP'),
                                             Text(
-                                              _nilaiSwitch? 'Practice: True':'Practice: False',
-                                              style: TextStyle(color: _nilaiSwitch ? Colors.green : Colors.red),
-                                              )
+                                              _nilaiSwitch
+                                                  ? 'Practice: True'
+                                                  : 'Practice: False',
+                                              style: TextStyle(
+                                                  color: _nilaiSwitch
+                                                      ? Colors.green
+                                                      : Colors.red),
+                                            )
                                           ]),
                                         ),
                                         TextButton(
